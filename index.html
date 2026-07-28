@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Планировщик участия товаров Wildberries в акциях" />
+  <title>WB — Планировщик акций</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>WB — Планировщик акций</h1>
+      <p>Контроль розничной цены, минимальной цены и участия в акциях</p>
+    </div>
+    <div class="actions">
+      <label class="button secondary">Импорт JSON<input id="importFile" type="file" accept="application/json" hidden></label>
+      <button id="exportJson" class="button secondary">Экспорт JSON</button>
+      <button id="exportCsv" class="button">Экспорт рекомендаций CSV</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="summary" class="cards"></section>
+
+    <nav class="tabs">
+      <button data-tab="products" class="tab active">Товары</button>
+      <button data-tab="campaigns" class="tab">Акции</button>
+      <button data-tab="recommendations" class="tab">Рекомендации</button>
+      <button data-tab="inactive" class="tab">Не участвовали более недели</button>
+      <button data-tab="settings" class="tab">Настройки</button>
+    </nav>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Поиск по артикулу, товару или акции" />
+      <button id="confirmAll" class="button">Подтвердить все акции</button>
+    </section>
+
+    <section id="content" class="panel"></section>
+  </main>
+
+  <template id="emptyTemplate"><div class="empty">Нет данных для отображения</div></template>
+  <script src="app.js"></script>
+</body>
+</html>
