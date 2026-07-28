@@ -6,7 +6,13 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&
 async function init(){
   const saved=localStorage.getItem('wbPlannerData');
   if(saved){try{state.data=JSON.parse(saved)}catch{}}
-  if(!state.data){state.data=await fetch('data/backup.json').then(r=>r.json())}
+ if(!state.data){
+  const response = await fetch('./backup.json');
+  if(!response.ok){
+    throw new Error(`Не удалось загрузить backup.json: ${response.status}`);
+  }
+  state.data = await response.json();
+}
   bind();render();
 }
 function bind(){
